@@ -1,0 +1,8 @@
+{
+  "localAddress": "127.0.0.1",
+  "localPort": 1080,
+  "serverAddress": "",
+  "serverPort": 80,
+  "password": "",
+  "method": "aes-256-cfb"
+}
