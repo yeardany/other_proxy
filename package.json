@@ -1,8 +1,14 @@
 {
-  "name": "shadow",
+  "name": "KIRS",
+  "version": "1.0.0",
+  "description": "vpn",
+  "main": "main.js",
   "scripts": {
-    "start": "node local.js"
+    "start": "electron .",
+    "package": "electron-packager ./ --platform=darwin --arch=x64 --version 1.6.2 --out=./out --icon=./icon.icns --overwrite"
   },
+  "author": "yeardany",
+  "license": "CC0-1.0",
   "dependencies": {
     "bufferutil": "^3.0.0",
     "commander": "^2.9.0",
@@ -10,5 +16,9 @@
     "shadowsocks": "^1.5.3",
     "throng": "^4.0.0",
     "ws": "^2.2.3"
+  },
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-packager": "^9.0.0"
   }
 }
