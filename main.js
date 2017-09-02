@@ -14,13 +14,12 @@ let win;
 app.on('ready', () => {
     win = new BrowserWindow(
         {
-            width: 414,
-            height: 736,
-            center: true,
+            width: 331,
+            height: 589,
             resizable: false,
             maximizable: false,
             fullscreenable: false,
-            title: 'KIRS',
+            title: '海大视频小站',
             backgroundColor: '#fff'
         }
     );
