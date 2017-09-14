@@ -14,25 +14,25 @@ let win;
 app.on('ready', () => {
     win = new BrowserWindow(
         {
-            width: 331,
-            height: 589,
+            width: 700,
+            height: 600,
             resizable: false,
             maximizable: false,
             fullscreenable: false,
-            title: '海大视频小站',
+            title: 'KIRS',
             backgroundColor: '#fff'
         }
     );
 
     //加载远程连接
-    win.loadURL('https://kirs.leanapp.cn');
+    //win.loadURL('https://kirs.leanapp.cn');
 
     //加载本地文件
-    // win.loadURL(url.format({
-    //     pathname: path.join(__dirname, 'index.html'),
-    //     protocol: 'file:',
-    //     slashes: true
-    // }));
+    win.loadURL(url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
 
     win.on('closed', () => {
         app.quit()
