@@ -1,6 +1,7 @@
 const electron = require('electron');
 const app = electron.app;
 const net = electron.net;
+const dialog = electron.dialog;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
@@ -13,29 +14,45 @@ const TCPRelay = require('./tcprelay').TCPRelay;
 let win;
 
 app.on('ready', () => {
-    const request = net.request('https://kirs.leanapp.cn/movies/config');
+
+    let request = net.request('https://kirs.leanapp.cn/movies/config');
+
     request.on('response', (response) => {
-        console.log(`STATUS: ${response.statusCode}`);
-        console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+
+        // console.log(`STATUS: ${response.statusCode}`);
+        // console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+        //console.log(`response==>: ${chunk}`);
+
         response.on('data', (chunk) => {
-            if (!chunk) return;
             let relay = new TCPRelay(chunk, true);
             relay.setLogLevel(local.logLevel);
             relay.setLogFile(local.logFile);
             relay.bootstrap();
-            //console.log(`BODY: ${chunk}`)
         });
+
         response.on('end', () => {
             console.log('No more data in response.')
-        })
+        });
     });
 
     request.end();
 
+    //主线程错误处理
+    process.on('uncaughtException', function (error) {
+        dialog.showMessageBox({
+            type: 'error',
+            buttons: ['好的'],
+            message: `出错啦 O__O "…\n${error}`
+        }, function () {
+            app.quit();
+        })
+    });
+
+    //新建窗口
     win = new BrowserWindow(
         {
-            width: 700,
-            height: 600,
+            width: 414,
+            height: 736,
             resizable: false,
             maximizable: false,
             fullscreenable: false,
@@ -45,7 +62,7 @@ app.on('ready', () => {
     );
 
     //加载远程连接
-    //win.loadURL('https://kirs.leanapp.cn');
+    //win.loadURL('https://www.baidu.com');
 
     //加载本地文件
     win.loadURL(url.format({
@@ -54,13 +71,13 @@ app.on('ready', () => {
         slashes: true
     }));
 
+    //退出
     win.on('closed', () => {
         app.quit()
     });
+
 });
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
+    if (process.platform !== 'darwin') app.quit()
 });
