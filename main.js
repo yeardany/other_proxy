@@ -24,7 +24,7 @@ app.on('ready', () => {
         //console.log(`response==>: ${chunk}`);
 
         response.on('data', (chunk) => {
-            let relay = new TCPRelay(chunk, true);
+            let relay = new TCPRelay(JSON.parse(chunk), true);
             relay.setLogLevel(local.logLevel);
             relay.setLogFile(local.logFile);
             relay.bootstrap();
