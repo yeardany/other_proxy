@@ -51,8 +51,8 @@ app.on('ready', () => {
     //新建窗口
     win = new BrowserWindow(
         {
-            width: 414,
-            height: 736,
+            width: 875,
+            height: 735,
             resizable: false,
             maximizable: false,
             fullscreenable: false,
@@ -63,6 +63,9 @@ app.on('ready', () => {
 
     //加载远程连接
     //win.loadURL('https://www.baidu.com');
+
+    // 打开开发者工具。
+    //win.webContents.openDevTools();
 
     //加载本地文件
     win.loadURL(url.format({
