@@ -63,6 +63,7 @@ config.json
 
 out/
 .cache/
+.idea/
 compile/
 release/
 version.json
