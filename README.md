@@ -1,6 +1,6 @@
 #### 使用说明
 
-1. 安装依赖：`npm install`
+1. 安装依赖：`npm install`，使用 `cnpm` 全局安装 electron@1.6.3 和 electron-package
 
 2. 打包MacApp：`npm run-script package` ，将输出目录`out` 下的 `Kirs.app` 复制到**应用程序**下打开即可
 
