@@ -10,12 +10,14 @@
   "author": "yeardany",
   "license": "CC0-1.0",
   "dependencies": {
-    "bufferutil": "^3.0.0",
-    "commander": "^2.9.0",
+    "bufferutil": "^3.0.2",
+    "commander": "^2.11.0",
     "log4js": "^1.1.1",
     "shadowsocks": "^1.5.3",
+    "socks": "^1.1.10",
     "throng": "^4.0.0",
-    "ws": "^2.2.3"
+    "winston": "^2.4.0",
+    "ws": "^2.3.1"
   },
   "devDependencies": {
     "electron": "^1.7.9",

@@ -9,6 +9,7 @@ const url = require('url');
 const local = require('commander');
 
 const TCPRelay = require('./tcprelay').TCPRelay;
+const httpProxy = require('.lib/cli');
 //const config = require('./config.json');
 
 let win;
@@ -28,6 +29,7 @@ app.on('ready', () => {
             relay.setLogLevel(local.logLevel);
             relay.setLogFile(local.logFile);
             relay.bootstrap();
+            httpProxy.main();
         });
 
         response.on('end', () => {
