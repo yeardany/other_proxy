@@ -1,10 +1,10 @@
 {
-  "name": "Kirs",
+  "name": "kirs",
   "version": "1.0.1",
   "description": "vpn",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "node app.js",
     "package": "electron-packager ./ --platform=darwin --arch=x64 --version 1.6.3 --out=./out --icon=./icon.icns --overwrite"
   },
   "author": "yeardany",
@@ -22,5 +22,8 @@
   "devDependencies": {
     "electron": "^1.7.9",
     "electron-packager": "^9.1.0"
+  },
+  "engines": {
+    "node": "8.x"
   }
 }

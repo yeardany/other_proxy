@@ -59,12 +59,9 @@ typings/
 # dotenv environment variables file
 .env
 
-config.json
-
 out/
 .cache/
 .idea/
-.leancloud/
 compile/
 release/
 version.json
