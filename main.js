@@ -1,6 +1,5 @@
 const electron = require('electron');
 const app = electron.app;
-const net = electron.net;
 const dialog = electron.dialog;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -9,35 +8,17 @@ const url = require('url');
 const local = require('commander');
 
 const TCPRelay = require('./tcprelay').TCPRelay;
-const httpProxy = require('.lib/cli');
-//const config = require('./config.json');
+const config = require('./config.json');
 
 let win;
 
 app.on('ready', () => {
 
-    let request = net.request('https://kirs.leanapp.cn/movies/config');
-
-    request.on('response', (response) => {
-
-        // console.log(`STATUS: ${response.statusCode}`);
-        // console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
-        //console.log(`response==>: ${chunk}`);
-
-        response.on('data', (chunk) => {
-            let relay = new TCPRelay(JSON.parse(chunk), true);
-            relay.setLogLevel(local.logLevel);
-            relay.setLogFile(local.logFile);
-            relay.bootstrap();
-            httpProxy.main();
-        });
-
-        response.on('end', () => {
-            console.log('No more data in response.')
-        });
-    });
-
-    request.end();
+    //连接服务器
+    let relay = new TCPRelay(config, true);
+    relay.setLogLevel(local.logLevel);
+    relay.setLogFile(local.logFile);
+    relay.bootstrap();
 
     //主线程错误处理
     process.on('uncaughtException', function (error) {
