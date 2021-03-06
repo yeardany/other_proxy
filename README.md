@@ -1,3 +1,4 @@
+### 此项目已不可用，不再维护
 #### 使用说明
 
 1. 安装依赖：`npm install`，使用 `cnpm` 全局安装 electron@1.6.3 和 electron-package
